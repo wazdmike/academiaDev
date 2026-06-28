@@ -1,18 +1,25 @@
 package io.github.wazdmike.domain.entities;
 
 public class Student extends User{
-    private SubscriptionPlan subscriptionPlan;
+    private String subscriptionPlan;
 
-    public Student(String name, String email, SubscriptionPlan subscriptionPlan){
-        super(name, email);
-        this.subscriptionPlan = subscriptionPlan;
+    public Student(String id, String name, String email, String plan) {
+        super(id, name, email);
+        this.subscriptionPlan = plan;
     }
 
-    public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
-        this.subscriptionPlan = subscriptionPlan;
+    public String getSubscriptionPlan() {
+        return subscriptionPlan;
     }
 
-    public boolean canEnroll(int currentActiveEnrollments) {
-        return currentActiveEnrollments < subscriptionPlan.getEnrollmentLimit();
+    public void setSubscriptionPlan(String plan) {
+        this.subscriptionPlan = plan;
+    }
+
+    public boolean canEnroll(int activeEnrollments) {
+        if (subscriptionPlan.equals("BASIC")) {
+            return activeEnrollments < 3;
+        }
+        return true;
     }
 }
