@@ -3,11 +3,12 @@ package io.github.wazdmike.domain.entities;
 import io.github.wazdmike.domain.exceptions.BusinessException;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Enrollment {
-    private String id;
-    private Student student;
-    private Course course;
+    private final String id;
+    private final Student student;
+    private final Course course;
     private int progress;
     private LocalDateTime enrolledAt;
 
@@ -41,5 +42,11 @@ public class Enrollment {
                     "Progresso deve ser entre 0 e 100.");
         }
         this.progress = percent;
+    }
+
+    @Override
+    public String toString() {
+        String data = enrolledAt.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        return String.format("Curso: %-40s | Progresso: %3d%% | Matriculado em: %s", course.getTitle(), progress, data);
     }
 }

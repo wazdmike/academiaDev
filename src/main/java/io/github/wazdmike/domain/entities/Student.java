@@ -22,4 +22,9 @@ public class Student extends User{
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " | Plano: " + subscriptionPlan;
+    }
 }

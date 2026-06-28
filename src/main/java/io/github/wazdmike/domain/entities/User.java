@@ -1,9 +1,9 @@
 package io.github.wazdmike.domain.entities;
 
 public abstract class User {
-    private String id;
-    private String name;
-    private String email;
+    private final String id;
+    private final String name;
+    private final String email;
 
     public User(String id, String name, String email) {
         this.id = id;
@@ -21,5 +21,10 @@ public abstract class User {
 
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + getClass().getSimpleName() + "] " + name + " <" + email + ">";
     }
 }
