@@ -10,7 +10,7 @@ public class Enrollment {
     private final Student student;
     private final Course course;
     private int progress;
-    private LocalDateTime enrolledAt;
+    private final LocalDateTime enrolledAt;
 
     public Enrollment(String id, Student student, Course course) {
         this.id = id;
